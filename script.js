@@ -1,6 +1,9 @@
-
 //using form scan html for the attribute name"quiz", scan for "questionOne" get the value//
 function check() {
+  //  I wouldn't recommend relying on the name attributes like this -- it may not work across browsers and could lead to unexpected results!
+  // I would use querySelector
+  // var quiz = document.getElementById('quiz')
+  // var question1 = document.getElementsByName('questionOne') -- you could also make this more DRY by selecting all of them by className
   var question1 = document.quiz.questionOne.value;
   var question2 = document.quiz.questionTwo.value;
   var question3 = document.quiz.questionThree.value;
@@ -11,6 +14,7 @@ function check() {
   //starting score is 0
   var correct = 0;
 
+  // I would think about how you would keep extending this if you have more questions in order to make this DRY-er!
   // if value equals answer add one point to the total
   if (question1 == "Chlorophyll") {
     correct++;
@@ -47,12 +51,15 @@ function check() {
   document.getElementById("message").innerHTML = messages[score];
   document.getElementById("number_correct").innerHTML =
     "(You got " + correct + " out of 6 correct!)";
+  // I would remove debugging statements in production!
   console.log(number_correct);
 }
+
 var sliderQuestions = document.querySelectorAll(".slide"),
   arrowLeft = document.querySelector("#arrow-left"),
   arrowRight = document.querySelector("#arrow-right"),
   current = 0;
+
 //clear all images
 function reset() {
   for (let i = 0; i < sliderQuestions.length; i++) {
@@ -60,8 +67,10 @@ function reset() {
   }
 }
 
+// You aren't using these variables!
 var slideOne = document.querySelector(".slide1");
 var slideSix = document.querySelector(".slide6");
+// You are grabbing these twice!
 arrowLeft = document.querySelector("#arrow-left");
 arrowRight = document.querySelector("#arrow-right");
 var sliderQuestions = document.querySelectorAll(".slide"),
@@ -70,9 +79,11 @@ var sliderQuestions = document.querySelectorAll(".slide"),
 //just shows the first question  _________
 function startSlide() {
   reset();
+  // I would have class names for display none and display block instead of changing the CSS in this file
+  // i.e. arrowLeft.classList.add('hidden') and then in css .hidden { display: none; }
+  // same thing with display block!
   arrowLeft.style.display = "none";
   sliderQuestions[0].style.display = "block";
-  
 }
 
 //show previous slide
@@ -92,14 +103,13 @@ function slideRight() {
 }
 //right arrow click event
 arrowRight.addEventListener("click", function() {
+  // Don't think you need this if you are hiding the next button -- it is for cycling back to the beginning!
   if (current === sliderQuestions.length - 1) {
     current = -1;
-    console.log("fire")
-  
-    
+    console.log("fire");
   }
-  if(current === sliderQuestions.length -2){
-  arrowRight.style.display= "none";
+  if (current === sliderQuestions.length - 2) {
+    arrowRight.style.display = "none";
   }
   slideRight();
 });
@@ -112,4 +122,3 @@ arrowLeft.addEventListener("click", function() {
   slideLeft();
 });
 startSlide();
-

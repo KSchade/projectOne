@@ -4,16 +4,18 @@ K-5 trivia is an elementary themed one player trivia game. Each user selected an
 Keep your 5th grade audience in mind!! Game should gain and retain a 5th graders attention. Use colorful graphics and present a simple layout. 
 
 ##### Mockup:
-![](MVP.PNG)
+![](images/MVP.PNG)
 
 ##### Mockup
-![](screenshot.PNG)
+![](images/screenshot.PNG)
 
 
 ## Code Style
 Form style to keep score and Vanilla JavaScript
 
-## Code Example 
+## Code Example
+
+```js
 function check() {
   var question1 = document.quiz.questionOne.value;
   var question2 = document.quiz.questionTwo.value;
@@ -48,7 +50,7 @@ function check() {
   document.getElementById("message").innerHTML = messages[score];
   document.getElementById("number_correct").innerHTML =
     "(You got " + correct + " out of 6 correct!)";
-
+```
 
 ##Deployment
 App is deployed at https://kschade.github.io/projectOne/
