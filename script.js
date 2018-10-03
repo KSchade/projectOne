@@ -1,4 +1,3 @@
-
 //using form scan html for the attribute name"quiz", scan for "questionOne" get the value//
 function check() {
   var question1 = document.quiz.questionOne.value;
@@ -7,6 +6,7 @@ function check() {
   var question4 = document.quiz.questionFour.value;
   var question5 = document.quiz.questionFive.value;
   var question6 = document.quiz.questionSix.value;
+  var question7 = document.quiz.questionSeven.value;
 
   //starting score is 0
   var correct = 0;
@@ -31,6 +31,9 @@ function check() {
   if (question6 == "3") {
     correct++;
   }
+  if (question7 == "True") {
+    correct++;
+  }
 
   var messages = ["Awesome job!", "Not bad :)", "Try Again!"];
   var score;
@@ -46,7 +49,7 @@ function check() {
 
   document.getElementById("message").innerHTML = messages[score];
   document.getElementById("number_correct").innerHTML =
-    "(You got " + correct + " out of 6 correct!)";
+    "(You got " + correct + " out of 7 correct!)";
   console.log(number_correct);
 }
 var sliderQuestions = document.querySelectorAll(".slide"),
@@ -72,7 +75,6 @@ function startSlide() {
   reset();
   arrowLeft.style.display = "none";
   sliderQuestions[0].style.display = "block";
-  
 }
 
 //show previous slide
@@ -94,12 +96,10 @@ function slideRight() {
 arrowRight.addEventListener("click", function() {
   if (current === sliderQuestions.length - 1) {
     current = -1;
-    console.log("fire")
-  
-    
+    console.log("fire");
   }
-  if(current === sliderQuestions.length -2){
-  arrowRight.style.display= "none";
+  if (current === sliderQuestions.length - 2) {
+    arrowRight.style.display = "none";
   }
   slideRight();
 });
@@ -112,4 +112,3 @@ arrowLeft.addEventListener("click", function() {
   slideLeft();
 });
 startSlide();
-
